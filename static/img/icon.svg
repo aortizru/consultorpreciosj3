@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Consultor de Precios">
+  <rect width="512" height="512" rx="96" fill="#0047ab"/>
+  <rect x="104" y="124" width="304" height="264" rx="28" fill="#ffffff"/>
+  <path d="M148 178h24v156h-24V178Zm44 0h14v156h-14V178Zm36 0h28v156h-28V178Zm48 0h14v156h-14V178Zm36 0h18v156h-18V178Zm42 0h10v156h-10V178Z" fill="#17191c"/>
+  <path d="M134 104h244v44H134z" fill="#ffffff" opacity=".92"/>
+  <path d="M148 404h216" stroke="#ffffff" stroke-width="24" stroke-linecap="round"/>
+</svg>

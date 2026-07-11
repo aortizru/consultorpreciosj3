@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0047ab" />
+    <meta name="description" content="Consultor de precios con escaneo y busqueda de productos." />
+    <title>Consultor de Precios</title>
+    <link rel="manifest" href="/static/manifest.json" />
+    <link rel="icon" href="/static/img/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/static/img/icon.svg" />
+    <link rel="stylesheet" href="/static/css/style.css?v=19" />
+    <script src="/static/vendor/zxing-browser.min.js" defer></script>
+    <script src="/static/vendor/quagga.min.js" defer></script>
+    <script src="/static/js/app.js?v=19" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="price-card" aria-label="Consultor de precios">
+        <header class="card-brand">
+          <span class="brand-badge" aria-hidden="true">CP</span>
+          <h1>Consultor de Precios</h1>
+        </header>
+
+        <form class="search-form" id="search-form" autocomplete="off">
+          <div class="input-wrap">
+            <label for="search-input">Codigo/Barras</label>
+            <input
+              id="search-input"
+              name="q"
+              inputmode="search"
+              type="search"
+              placeholder="Buscar codigo o nombre"
+              aria-autocomplete="list"
+              aria-controls="suggestions"
+            />
+            <div id="suggestions" class="suggestions" role="listbox"></div>
+          </div>
+          <button id="scan-button" class="scan-button" type="button" aria-label="Escanear codigo">
+            <span class="qr-mark" aria-hidden="true"></span>
+            <span class="lens-mark" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <section id="result-card" class="result-card idle" aria-live="polite">
+          <p id="product-code" class="product-code">Nombre - PLU</p>
+          <h1 id="product-name">Busca o escanea un producto</h1>
+          <p class="price-label">Precio</p>
+          <strong id="product-price">$0</strong>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="scanner-dialog" class="scanner-dialog">
+      <div class="scanner-header">
+        <p id="scanner-status">Preparando camara...</p>
+        <button id="close-scanner" type="button" aria-label="Cerrar camara">Cerrar</button>
+      </div>
+      <label class="camera-picker" for="camera-select">
+        Camara
+        <select id="camera-select"></select>
+      </label>
+      <div class="scanner-frame">
+        <div id="reader">
+          <video id="scanner-video" muted playsinline webkit-playsinline></video>
+        </div>
+        <div class="scan-window" aria-hidden="true">
+          <span></span>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

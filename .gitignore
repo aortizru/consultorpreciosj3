@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+cert.pem
+key.pem
+.agents/
+.codex/
