@@ -13,6 +13,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+SQLSERVER_DATABASE = "J3System01"
+SQLSERVER_USER = "SA"
+
+
 class DatabaseError(Exception):
     """Error controlado para no filtrar detalles internos de SQL Server al cliente."""
 
@@ -39,8 +43,8 @@ class Database:
             (
                 "DRIVER={ODBC Driver 17 for SQL Server};"
                 f"SERVER={os.getenv('SQLSERVER_SERVER', '127.0.0.1')};"
-                f"DATABASE={os.getenv('SQLSERVER_DATABASE', 'J3System01')};"
-                f"UID={os.getenv('SQLSERVER_USER', 'SA')};"
+                f"DATABASE={SQLSERVER_DATABASE};"
+                f"UID={SQLSERVER_USER};"
                 f"PWD={os.getenv('SQLSERVER_PASSWORD', '')};"
                 "TrustServerCertificate=yes;"
             ),

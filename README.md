@@ -29,7 +29,7 @@ Add python.exe to PATH
 6. Verifica:
 
 ```powershell
-python --version
+py -3.12 --version
 ```
 
 Debe mostrar Python 3.12.x.
@@ -50,6 +50,25 @@ ODBC Driver 17 for SQL Server
 
 ## 3. Preparar el proyecto
 
+### Opcion rapida con ejecutables
+
+En Windows, desde la carpeta del proyecto:
+
+1. Ejecuta `InstalarTodo.exe`.
+2. Revisa o edita `.env` con la IP o nombre del servidor SQL Server.
+3. Ejecuta `IniciarServicio.exe`.
+
+`InstalarTodo.exe` crea `.venv` e instala las dependencias de `requirements.txt`.
+`IniciarServicio.exe` levanta la aplicacion con HTTPS en `https://localhost:8443` si existen `cert.pem` y `key.pem`; si no existen, usa HTTP en `http://localhost:8080`.
+
+Si necesitas regenerar los ejecutables:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\build_exes.ps1
+```
+
+### Opcion manual
+
 En PowerShell, entra a la carpeta del proyecto:
 
 ```powershell
@@ -59,7 +78,7 @@ cd "C:\ruta\al\proyecto\ConsultorPrecioCompraYa"
 Crea un entorno virtual:
 
 ```powershell
-python -m venv .venv
+py -3.12 -m venv .venv
 ```
 
 Activalo:
@@ -83,7 +102,7 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-## 4. Configurar conexion SQL Server
+## 4. Configurar servidor SQL Server
 
 Copia el archivo de ejemplo:
 
@@ -95,12 +114,10 @@ Edita `.env`:
 
 ```text
 SQLSERVER_SERVER=IP_O_SERVIDOR
-SQLSERVER_DATABASE=J3System01
-SQLSERVER_USER=SA
-SQLSERVER_PASSWORD=TU_PASSWORD
+SQLSERVER_PASSWORD=CLAVE_SQL
 ```
 
-El archivo `.env` no se sube a Git porque contiene datos sensibles.
+La base de datos y el usuario se manejan internamente en la aplicacion. La clave queda solo en `.env`, que no se sube a Git.
 
 ## 5. Probar conexion y busqueda
 
